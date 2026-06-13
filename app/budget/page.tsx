@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function BudgetPage() {
   const [cpu, setCpu] = useState(0);
@@ -8,6 +8,25 @@ export default function BudgetPage() {
   const [ram, setRam] = useState(0);
   const [storage, setStorage] = useState(0);
   const [casePrice, setCasePrice] = useState(0);
+
+  useEffect(() => {
+    const savedBudget = localStorage.getItem("pcBudget");
+
+    if (savedBudget) {
+      const budget = JSON.parse(savedBudget);
+
+      setCpu(budget.cpu || 0);
+      setGpu(budget.gpu || 0);
+      setRam(budget.ram || 0);
+      setStorage(budget.storage || 0);
+      setCasePrice(budget.casePrice || 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    const budget = { cpu, gpu, ram, storage, casePrice };
+    localStorage.setItem("pcBudget", JSON.stringify(budget));
+  }, [cpu, gpu, ram, storage, casePrice]);
 
   const total = cpu + gpu + ram + storage + casePrice;
 

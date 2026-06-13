@@ -116,4 +116,47 @@ input {
   .cardGrid {
     grid-template-columns: 1fr;
   }
+  
+}
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.formBox label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.formBox input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 15px;
+  }
+
+  .formBox {
+    width: 100%;
+  }
+
+  .formBox input {
+    font-size: 16px;
+  }
 }
